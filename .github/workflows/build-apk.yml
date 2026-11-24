@@ -16,13 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check project files
-        run: |
-          ls -la
-          ls -la lib
-          test -f pubspec.yaml
-          test -f lib/main.dart
-
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -33,6 +26,12 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+
+      - name: Generate Android files
+        run: |
+          flutter create --platforms=android --org com.example .
+          test -f android/app/build.gradle
+          test -f android/app/build.gradle.kts
 
       - name: Install dependencies
         run: flutter pub get
