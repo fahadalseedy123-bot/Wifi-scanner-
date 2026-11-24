@@ -1,4 +1,7 @@
 
+      - name: Generate Android project files
+        run: flutter create --platforms=android .
+
 name: wifi_scanner
 description: Nearby WiFi Network Scanner
 publish_to: 'none'
